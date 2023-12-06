@@ -3,7 +3,7 @@
         <div
             class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
             <div class="bg-white p-4 ">
-                <form action="{{ route('baptismal-schedule-form.store') }}" method="POST">
+                <form action="{{ route('baptismal-schedule-form.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="space-y-12">
                         <div class="border-b bg-slate-900 overflow-y-auto p-6 rounded-lg border-gray-900/10 pb-12">
@@ -254,6 +254,18 @@
                                         <input type="text" name="sponsors" id="sponsors" value="{{ old('sponsors') }}"
                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         <x-input-error class="mt-2" :messages="$errors->get('sponsors')" />
+                                    </div>
+                                </div>
+                                <div class="sm:col-span-3">
+                                    <label for="birth_certificate"
+                                        class="block text-sm font-medium leading-6 text-gray-200">
+                                        Birth Certificate
+                                    </label>
+                                    <div class="mt-2">
+                                        <input type="file" multiple accept="image/*" name="birth_certificate[]"
+                                            id="birth_certificate" value="{{ old('birth_certificate') }}"
+                                            class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                        <x-input-error class="mt-2" :messages="$errors->get('birth_certificate')" />
                                     </div>
                                 </div>
                             </div>

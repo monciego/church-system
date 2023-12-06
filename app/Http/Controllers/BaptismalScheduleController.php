@@ -115,7 +115,14 @@ class BaptismalScheduleController extends Controller
             'godmother' => 'nullable|string|max:255',
             'parish_priest' => 'nullable|string|max:255',
             'sponsors' => 'nullable|max:255',
+            'birth_certificate' => 'nullable',
         ]);
+
+        $birth_certificate = [];
+        foreach ($request->file('birth_certificate') as $index => $file) {
+                $path = $file->store('documents', 'public');
+                $birth_certificate[] = $path;
+        }
 
          BaptismalSchedule::create([
             'user_id' => Auth::user()->id,
@@ -136,6 +143,7 @@ class BaptismalScheduleController extends Controller
             'godmother' => $request->input('godmother'),
             'parish_priest' => $request->input('parish_priest'),
             'sponsors' => $request->input('sponsors'),
+            'birth_certificate' =>  implode('|', $birth_certificate),
          ]);
 
         return redirect()->back()->with('modal-message', 'Submitted Successfuly!');
