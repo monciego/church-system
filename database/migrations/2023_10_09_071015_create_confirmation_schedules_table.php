@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('birthplace')->nullable();
             $table->string('contact_number');
             $table->longText('message')->nullable();
+            $table->string('baptismal_certificate')->nullable();
 
             $table->boolean('approve')->default(0)->nullable(); // approve appointment
             $table->boolean('reject')->default(0)->nullable(); // reject appointment

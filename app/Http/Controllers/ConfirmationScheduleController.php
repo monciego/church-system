@@ -105,7 +105,15 @@ class ConfirmationScheduleController extends Controller
             'residence_of_parents' => 'nullable|string|max:255',
             'place_of_baptism' => 'nullable|max:255',
             'birthplace' => 'nullable|max:255',
+            'baptismal_certificate' => 'nullable',
         ]);
+
+        $baptismal_certificate = [];
+        foreach ($request->file('baptismal_certificate') as $index => $file) {
+                $path = $file->store('documents', 'public');
+                $baptismal_certificate[] = $path;
+        }
+
 
          ConfirmationSchedule::create([
             'user_id' => Auth::user()->id,
@@ -123,6 +131,7 @@ class ConfirmationScheduleController extends Controller
             'residence_of_parents' =>  $request->input('residence_of_parents'),
             'place_of_baptism' => $request->input('place_of_baptism'),
             'birthplace' =>  $request->input('birthplace'),
+            'baptismal_certificate' =>  implode("|", $baptismal_certificate),
          ]);
 
         return redirect()->back()->with('modal-message', 'Submitted Successfuly!');

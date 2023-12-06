@@ -28,5 +28,6 @@ class ConfirmationSchedule extends Model
         'desired_time',
         'contact_number',
         'message',
+        'baptismal_certificate',
     ];
 }
