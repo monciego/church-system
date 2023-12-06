@@ -24,5 +24,6 @@ class BurialSchedule extends Model
         'deceased_status',
         'cause_of_death',
         'date_of_death',
+        'death_certificate',
     ];
 }

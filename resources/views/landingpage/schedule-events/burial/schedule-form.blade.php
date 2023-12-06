@@ -6,7 +6,8 @@
                 <div
                     class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
                     <div class="bg-white p-4 ">
-                        <form action="{{ route('burial-schedule-form.store') }}" method="POST">
+                        <form action="{{ route('burial-schedule-form.store') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="space-y-12">
                                 <div
@@ -230,6 +231,19 @@
                                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                 <x-input-error class="mt-2"
                                                     :messages="$errors->get('contact_number')" />
+                                            </div>
+                                        </div>
+                                        <div class="sm:col-span-3">
+                                            <label for="death_certificate"
+                                                class="block text-sm font-medium leading-6 text-gray-200">
+                                                Death Certificate
+                                            </label>
+                                            <div class="mt-2">
+                                                <input type="file" multiple accept="image/*" name="death_certificate[]"
+                                                    id="death_certificate" value="{{ old('death_certificate') }}"
+                                                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <x-input-error class="mt-2"
+                                                    :messages="$errors->get('death_certificate')" />
                                             </div>
                                         </div>
                                     </div>

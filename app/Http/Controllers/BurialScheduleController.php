@@ -114,7 +114,14 @@ class BurialScheduleController extends Controller
             'cause_of_death' => 'string|max:255',
             'date_of_death' => 'string|max:255',
             'cemetery' => 'string|max:255',
+            'death_certificate' => 'nullable',
         ]);
+
+        $death_certificate = [];
+        foreach ($request->file('death_certificate') as $index => $file) {
+                $path = $file->store('documents', 'public');
+                $death_certificate[] = $path;
+        }
 
          BurialSchedule::create([
             'user_id' => Auth::user()->id,
@@ -132,6 +139,7 @@ class BurialScheduleController extends Controller
             'cause_of_death' => $request->input('cause_of_death'),
             'date_of_death' => $request->input('date_of_death'),
             'cemetery' => $request->input('cemetery'),
+            'death_certificate' => implode('|', $death_certificate),
          ]);
 
          return redirect()->back()->with('modal-message', 'Submitted Successfuly!');
