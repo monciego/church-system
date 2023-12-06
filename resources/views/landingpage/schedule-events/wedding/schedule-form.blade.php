@@ -228,6 +228,18 @@
                                         @include('landingpage.schedule-events.wedding.finalize-wedding-form')
                                     </div>
                                 </div>
+                                <p class="mt-4 text-sm">
+                                    Thank you for using our event booking system. Rest assured that we take every
+                                    precaution
+                                    to
+                                    protect
+                                    your data and provide a safe booking. If you have any questions, feel free to
+                                    reach out
+                                    to
+                                    our
+                                    official accounts. We're here to make your booking experience seamless and
+                                    enjoyable.
+                                </p>
                             </div>
                         </form>
                     </div>

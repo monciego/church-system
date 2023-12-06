@@ -255,7 +255,7 @@
                                             Message <span class="text-xs">(optional)</span>
                                         </label>
                                         <textarea id="message" name="message" rows="3"
-                                            class="block mt-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('message') }}</textarea>
+                                            class="block mt-2 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('message') }}</textarea>
                                         <x-input-error class="mt-2" :messages="$errors->get('message')" />
                                     </div>
 
@@ -272,6 +272,18 @@
                                         </button>
                                         @include('landingpage.schedule-events.confirmation.finalize-confirmation')
                                     </div>
+                                    <p class="mt-4 text-sm">
+                                        Thank you for using our event booking system. Rest assured that we take every
+                                        precaution
+                                        to
+                                        protect
+                                        your data and provide a safe booking. If you have any questions, feel free to
+                                        reach out
+                                        to
+                                        our
+                                        official accounts. We're here to make your booking experience seamless and
+                                        enjoyable.
+                                    </p>
                                 </div>
                             </div>
                         </form>
