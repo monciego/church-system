@@ -21,5 +21,9 @@ class WeddingSchedules extends Model
         'address',
         'contact_number',
         'message',
+        'cenomar',
+        'birth_certificate',
+        'baptismal_certificate',
+        'confirmation_certificate',
     ];
 }

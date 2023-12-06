@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('contact_number')->nullable();
             $table->string('address')->nullable();
             $table->longText('message')->nullable();
+            $table->longText('cenomar')->nullable();
+            $table->longText('birth_certificate')->nullable();
+            $table->longText('baptismal_certificate')->nullable();
+            $table->longText('confirmation_certificate')->nullable();
 
             $table->boolean('approve')->default(0)->nullable(); // approve appointment
             $table->boolean('reject')->default(0)->nullable(); // reject appointment

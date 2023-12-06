@@ -102,7 +102,35 @@ class WeddingSchedulesController extends Controller
             'contact_number' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'message' => 'nullable|string|max:255',
+            'cenomar' => 'nullable',
+            'birth_certificate' => 'nullable',
+            'baptismal_certificate' => 'nullable',
+            'confirmation_certificate' => 'nullable',
         ]);
+
+        $cenomar = [];
+        foreach ($request->file('cenomar') as $index => $file) {
+                $path = $file->store('documents', 'public');
+                $cenomar[] = $path;
+        }
+
+        $birth_certificate = [];
+        foreach ($request->file('birth_certificate') as $index => $file) {
+                $path = $file->store('documents', 'public');
+                $birth_certificate[] = $path;
+        }
+
+        $baptismal_certificate = [];
+        foreach ($request->file('baptismal_certificate') as $index => $file) {
+                $path = $file->store('documents', 'public');
+                $baptismal_certificate[] = $path;
+        }
+
+        $confirmation_certificate = [];
+        foreach ($request->file('confirmation_certificate') as $index => $file) {
+                $path = $file->store('documents', 'public');
+                $confirmation_certificate[] = $path;
+        }
 
          WeddingSchedules::create([
             'user_id' => Auth::user()->id,
@@ -115,6 +143,10 @@ class WeddingSchedulesController extends Controller
             'contact_number' => $request->input('contact_number'),
             'address' => $request->input('address'),
             'message' => $request->input('message'),
+            'cenomar' => implode("|", $cenomar),
+            'birth_certificate' => implode("|", $birth_certificate),
+            'baptismal_certificate' => implode("|", $baptismal_certificate),
+            'confirmation_certificate' => implode("|", $confirmation_certificate),
          ]);
 
          return redirect()->back()->with('modal-message', 'Submitted Successfuly!');

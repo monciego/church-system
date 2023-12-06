@@ -7,7 +7,8 @@
                 <div
                     class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
                     <div class="bg-white p-4 ">
-                        <form action="{{ route('wedding-schedule-form.store') }}" method="POST">
+                        <form action="{{ route('wedding-schedule-form.store') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="space-y-12">
                                 <div
@@ -148,6 +149,63 @@
                                                     :messages="$errors->get('contact_number')" />
                                             </div>
                                         </div>
+
+                                        <div class="sm:col-span-3">
+                                            <label for="cenomar"
+                                                class="block text-sm font-medium leading-6 text-gray-200">
+                                                Cenomar
+                                            </label>
+                                            <div class="mt-2">
+                                                <input type="file" multiple accept="image/*" name="cenomar[]"
+                                                    id="cenomar" value="{{ old('cenomar') }}"
+                                                    class="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <x-input-error class="mt-2" :messages="$errors->get('cenomar')" />
+                                            </div>
+                                        </div>
+
+                                        <div class="sm:col-span-3">
+                                            <label for="birth_certificate"
+                                                class="block text-sm font-medium leading-6 text-gray-200">
+                                                Birth Certificate
+                                            </label>
+                                            <div class="mt-2">
+                                                <input type="file" multiple accept="image/*" name="birth_certificate[]"
+                                                    id="birth_certificate" value="{{ old('birth_certificate') }}"
+                                                    class="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <x-input-error class="mt-2"
+                                                    :messages="$errors->get('birth_certificate')" />
+                                            </div>
+                                        </div>
+
+                                        <div class="sm:col-span-3">
+                                            <label for="baptismal_certificate"
+                                                class="block text-sm font-medium leading-6 text-gray-200">
+                                                Baptismal Certificate
+                                            </label>
+                                            <div class="mt-2">
+                                                <input type="file" multiple accept="image/*"
+                                                    name="baptismal_certificate[]" id="baptismal_certificate"
+                                                    value="{{ old('baptismal_certificate') }}"
+                                                    class="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <x-input-error class="mt-2"
+                                                    :messages="$errors->get('baptismal_certificate')" />
+                                            </div>
+                                        </div>
+
+                                        <div class="sm:col-span-3">
+                                            <label for="confirmation_certificate"
+                                                class="block text-sm font-medium leading-6 text-gray-200">
+                                                Confirmation Certificate
+                                            </label>
+                                            <div class="mt-2">
+                                                <input type="file" multiple accept="image/*"
+                                                    name="confirmation_certificate[]" id="confirmation_certificate"
+                                                    value="{{ old('confirmation_certificate') }}"
+                                                    class="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <x-input-error class="mt-2"
+                                                    :messages="$errors->get('confirmation_certificate')" />
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="sm:col-span-6 mt-4">
@@ -155,7 +213,7 @@
                                             Message <span class="text-xs">(optional)</span>
                                         </label>
                                         <textarea id="message" name="message" rows="3"
-                                            class="block mt-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('message') }}</textarea>
+                                            class="block mt-2 w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('message') }}</textarea>
                                         <x-input-error class="mt-2" :messages="$errors->get('message')" />
                                     </div>
 
