@@ -7,6 +7,7 @@ use App\Http\Controllers\BaptismalScheduleController;
 use App\Http\Controllers\BlessingScheduleController;
 use App\Http\Controllers\BurialScheduleController;
 use App\Http\Controllers\CancelledScheduleController;
+use App\Http\Controllers\ClientListsController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ConfirmationCertificateController;
 use App\Http\Controllers\ConfirmationScheduleController;
@@ -58,6 +59,7 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 // ** Route for superadministrator
 Route::group(['middleware' => ['auth', 'role:superadministrator', 'verified']], function() {
     Route::resource('/organizations', OrganizationController::class);
+    Route::get('/list-of-clients',[ClientListsController::class, "index"])->name('list-of-clients.index');
     Route::resource('/member', MemberController::class);
     Route::resource('/donations', DonationController::class);
     Route::get('/reports/monthly', [ReportController::class, 'monthly'])->name('report.monthly');
